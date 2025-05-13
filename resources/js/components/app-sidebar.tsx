@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, ShoppingBag } from 'lucide-react';
+import { BookOpen, DollarSign, Folder, LayoutGrid, ShoppingBag, Warehouse } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -14,9 +14,19 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Articles',
-        href: '/articles',
+        title: 'Productos',
+        href: '/productos',
         icon: ShoppingBag,
+    },
+    {
+        title: 'Inventario',
+        href: '/inventario',
+        icon: Warehouse,
+    },
+    {
+        title: 'Ventas',
+        href: '/ventas',
+        icon: DollarSign,
     },
 ];
 
@@ -53,7 +63,7 @@ export function AppSidebar() {
             </SidebarContent>
 
             <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
+                {/* <NavFooter items={footerNavItems} className="mt-auto" /> */}
                 <NavUser />
             </SidebarFooter>
         </Sidebar>
