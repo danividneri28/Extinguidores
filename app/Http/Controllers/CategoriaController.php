@@ -28,7 +28,13 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+
+        ]);
+
+        Categoria::create($request->all());
+        return redirect()->back()->with('success', 'Categoría creada con éxito.');
     }
 
     /**
