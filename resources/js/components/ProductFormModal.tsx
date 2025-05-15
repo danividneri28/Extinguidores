@@ -8,7 +8,7 @@ interface Product {
     codigo_barras: string;
     descripcion: string;
     precio: number;
-    categoria_id: "";
+    categoria_id: number;
 }
 
 interface Categoria {
@@ -29,7 +29,7 @@ export default function ProductFormModal({ isOpen, closeModal, product, categori
         codigo_barras: "",
         descripcion: "",
         precio: 0,
-        categoria_id: "",
+        categoria_id: 0,
     });
 
     useEffect(() => {
@@ -47,7 +47,7 @@ export default function ProductFormModal({ isOpen, closeModal, product, categori
                 codigo_barras: "",
                 descripcion: "",
                 precio: 0,
-                categoria_id: "",
+                categoria_id: 0,
             });
         }
     }, [product]);
@@ -73,10 +73,9 @@ export default function ProductFormModal({ isOpen, closeModal, product, categori
         data.append("codigo_barras", formData.codigo_barras);
         data.append("descripcion", formData.descripcion);
         data.append("precio", formData.precio.toString());
-        // data.append("categoria_id", formData.categoria_id.toString());
+        data.append("categoria_id", formData.categoria_id.toString());
 
         if (product?.id) {
-            console.log(formData);
             data.append("_method", "PUT");
             router.put(`/products/${product.id}`, data, {
                 onSuccess: () => {
@@ -86,7 +85,6 @@ export default function ProductFormModal({ isOpen, closeModal, product, categori
                 },
                 onError: () => {
                     toast.error("Error al actualizar el producto");
-                    console.error("Error al actualizar el producto");
                 }
             });
         } else {

@@ -14,6 +14,15 @@ export default defineConfig({
         react(),
         tailwindcss(),
     ],
+    server: {
+        host: 'www.extinguidorestest.com',   // tu dominio local
+        port: 5173,
+        https: false,                 // asegúrate de que es HTTP si tu Laravel también lo es
+        cors: true,
+        hmr: {
+            host: 'www.extinguidorestest.com',
+        },
+    },
     esbuild: {
         jsx: 'automatic',
     },
